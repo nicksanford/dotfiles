@@ -29,3 +29,5 @@ make && sudo make install
 cd
 git clone https://github.com/VundleVim/Vundle.vim.git /home/vagrant/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+git clone https://github.com/nicksanford/dotfiles.git && cp dotfiles/dotfiles/* .
