@@ -33,7 +33,6 @@ useradd deploy
 git clone https://github.com/nicksanford/dotfiles.git && cp -r dotfiles/dotfiles /home/deploy
 cp -R /root/.ssh /home/deploy/.ssh
 cp /root/.bashrc /home/deploy
-cp /root/.viminfo /home/deploy
 cp /root/.profile /home/deploy
 chmod 700 /home/deploy/.ssh
 chmod 400 /home/deploy/.ssh/authorized_keys
