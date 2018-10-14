@@ -10,6 +10,16 @@ apt-get upgrade -y
 # Security
 apt-get install -y fail2ban unattended-upgrades 
 
+# Create & set up deploy
+useradd deploy
+git clone https://github.com/nicksanford/dotfiles.git && cp -r dotfiles/dotfiles /home/deploy
+cp -R /root/.ssh /home/deploy/.ssh
+cp /root/.bashrc /home/deploy
+cp /root/.profile /home/deploy
+chmod 700 /home/deploy/.ssh
+chmod 400 /home/deploy/.ssh/authorized_keys
+chown deploy:deploy /home/deploy -R
+
 # Python
 apt-get install -y build-essential python3 python3-venv python3-dev 
 
@@ -26,17 +36,7 @@ apt-get install -y automake autoconf libreadline-dev libncurses-dev \
 apt-get install -y haskell-stack
 
 # Ruby
- apt-get install -y ruby ruby-dev
-
-# Create & set up deploy
-useradd deploy
-git clone https://github.com/nicksanford/dotfiles.git && cp -r dotfiles/dotfiles /home/deploy
-cp -R /root/.ssh /home/deploy/.ssh
-cp /root/.bashrc /home/deploy
-cp /root/.profile /home/deploy
-chmod 700 /home/deploy/.ssh
-chmod 400 /home/deploy/.ssh/authorized_keys
-chown deploy:deploy /home/deploy -R
+apt-get install -y ruby ruby-dev
 
 # Zsh
 apt-get install -y  zsh
