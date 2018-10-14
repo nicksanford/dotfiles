@@ -31,7 +31,7 @@ apt-get install -y haskell-stack
 # Create & set up deploy
 useradd deploy
 mkdir /home/deploy
-git clone https://github.com/nicksanford/dotfiles.git && cp dotfiles/dotfiles/* /home/deploy
+git clone https://github.com/nicksanford/dotfiles.git && cp dotfiles/dotfiles /home/deploy
 cp -R /root/.ssh /home/deploy/.ssh
 cp /root/.bashrc /home/deploy
 cp /root/.viminfo /home/deploy
