@@ -18,7 +18,6 @@ cp /root/.bashrc /home/deploy
 cp /root/.profile /home/deploy
 chmod 700 /home/deploy/.ssh
 chmod 400 /home/deploy/.ssh/authorized_keys
-chown deploy:deploy /home/deploy -R
 
 # Python
 apt-get install -y build-essential python3 python3-venv python3-dev 
@@ -51,3 +50,6 @@ make && sudo make install
 cd
 git clone https://github.com/VundleVim/Vundle.vim.git /home/deploy/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
+
+# Ensure deploy owns all it's dirs
+chown deploy:deploy /home/deploy -R
