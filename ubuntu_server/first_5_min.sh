@@ -20,7 +20,17 @@ chmod 700 /home/deploy/.ssh
 chmod 400 /home/deploy/.ssh/authorized_keys
 
 # Python
-apt-get install -y build-essential python3 python3-venv python3-dev 
+apt-get install -y build-essential make \ # python3 python3-venv python3-dev
+                   ibssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+                   libsqlite3-dev wget curl llvm libncurses5-dev xz-utils \
+                   tk-dev libxml2-dev libxmlsec1-dev libffi-dev
+git clone https://github.com/pyenv/pyenv.git /home/deploy/.pyenv
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> /home/deploy/.bashrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> /home/deploy/.bashrc
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> /home/deploy/.zshenv
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> /home/deploy/.zshenv
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.zshenv
 
 # Utils
 apt-get install -y tree silversearcher-ag ack
@@ -53,3 +63,7 @@ vim +PluginInstall +qall
 
 # Ensure deploy owns all it's dirs
 chown deploy:deploy /home/deploy -R
+
+# Install correct python version
+su deploy
+pyenv install 3.7.0
