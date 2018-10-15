@@ -21,8 +21,8 @@ chmod 400 /home/deploy/.ssh/authorized_keys
 
 # Python
 # python3 python3-venv python3-dev
-apt-get install -y build-essential make \ 
-                   ibssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+apt-get install -y build-essential make \
+                   libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
                    libsqlite3-dev wget curl llvm libncurses5-dev xz-utils \
                    tk-dev libxml2-dev libxmlsec1-dev libffi-dev
 git clone https://github.com/pyenv/pyenv.git /home/deploy/.pyenv
