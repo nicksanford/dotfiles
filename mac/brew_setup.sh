@@ -31,6 +31,7 @@ brew install fwup squashfs coreutils xz # install nerves deps
 brew install ocaml #TODO Do this
 brew install opam
 brew install rlwrap
+brew install asdf
 
 # Spacemacs install https://github.com/syl20bnr/spacemacs#macos
 brew tap d12frosted/emacs-plus
