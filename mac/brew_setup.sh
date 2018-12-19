@@ -27,8 +27,10 @@ brew install wget
 brew install youtube-dl
 brew install zsh
 brew install elixir # want to do this after the erlang deps
+brew install fwup squashfs coreutils xz # install nerves deps
 brew install ocaml #TODO Do this
 brew install opam
+brew install rlwrap
 
 # Spacemacs install https://github.com/syl20bnr/spacemacs#macos
 brew tap d12frosted/emacs-plus
@@ -52,3 +54,6 @@ brew cask install kap
 brew install python3 zeromq libmagic cairo pkg-config pango #haskell-stack omitting this as it is already installed above
 # Needed for threadscope https://hackage.haskell.org/package/threadscope
 brew install gtk+ gtk-mac-integration
+
+# Ruby
+brew install ruby-build rbenv

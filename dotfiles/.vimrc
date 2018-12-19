@@ -27,6 +27,7 @@ call vundle#begin()
 
  Bundle 'sorin-ionescu/vim-htmlvalidator'
  Bundle 'Shougo/vimproc'
+ Bundle 'tpope/vim-commentary'
 
  Bundle 'tpope/vim-fugitive'
 
