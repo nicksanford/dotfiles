@@ -5,3 +5,6 @@ all:
 	stow -t ~ nvim
 	stow -t ~ zsh
 	stow -t ~ alacritty
+
+setup:
+	./setup.sh
