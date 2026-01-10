@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -Eeuo pipefail
+set -Eeuox pipefail
 
 NVIM_VERSION=v0.11.5
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
