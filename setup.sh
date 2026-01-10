@@ -26,8 +26,9 @@ install_go() {
     return
   fi
 
-  curl -Lo https://go.dev/dl/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
-  rm -rf /usr/local/go && tar -C /usr/local -xzf go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
+  curl -Lo "$TMPDIR"/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz https://go.dev/dl/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
+  rm -rf /usr/local/go && tar -C /usr/local -xzf "$TMPDIR"/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
+  rm "$TMPDIR"/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
   echo 'export PATH=$PATH:/usr/local/go/bin' >>"$HOME/.zshrc"
   source "$HOME"/.zshrc
 }
@@ -39,14 +40,15 @@ install_nvim() {
 
   case "$OS" in
   linux)
-    curl -Lo "$TMPDIR/.local/bin/nvim" "https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-$ARCH.appimage"
+    curl -Lo "$TMPDIR/nvim" "https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-$ARCH.appimage"
+    mv "$TMPDIR/nvim" "$HOME/.local/bin/nvim"
     ;;
   darwin)
-    curl -Lo "$TMPDIR/.local/bin/nvim" "https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz"
+    curl -Lo "$TMPDIR/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz" "https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz"
     # avoid "unknown developer" warning
-    xattr -c "$TMPDIR/Downloads/nvim-macos-$ARCH.tar.gz"
-    tar xzvf "$TMPDIR/Downloads/nvim-macos-$ARCH.tar.gz"
-    cp -r "$HOME/Downloads/nvim-macos-$ARCH" "$HOME/.local/"
+    xattr -c "$TMPDIR/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz"
+    tar -C "$HOME/.local/" -xzvf "$TMPDIR/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz"
+    rm "$TMPDIR/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz"
     ;;
   *)
     echo "unsupported $OS"
