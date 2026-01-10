@@ -4,6 +4,7 @@ set -Eeuox pipefail
 NVIM_VERSION=v0.11.5
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
+GO_ARCH=$(echo "$ARCH" | sed 's/^-x86_64$/amd64/')
 ASDF_VERSION="v0.18.0"
 GO_VERSION="1.25.5"
 TMPDIR="${TMPDIR:-/tmp}"
@@ -26,9 +27,9 @@ install_go() {
     return
   fi
 
-  curl -Lo "$TMPDIR"/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz https://go.dev/dl/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
-  rm -rf /usr/local/go && tar -C /usr/local -xzf "$TMPDIR"/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
-  rm "$TMPDIR"/go"$GO_VERSION"."$OS"-"$ARCH".tar.gz
+  curl -Lo "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz https://go.dev/dl/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
+  rm -rf /usr/local/go && tar -C /usr/local -xzf "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
+  rm "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
   echo 'export PATH=$PATH:/usr/local/go/bin' >>"$HOME/.zshrc"
   source "$HOME"/.zshrc
 }
