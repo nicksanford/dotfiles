@@ -12,11 +12,11 @@ check_if_stop() {
   read -r -p "would you like to install $1? [y/N] " answer
   case "$answer" in [yY])
     echo "installing $1"
-    return 0
+    return 1
     ;;
   *)
     echo "skipping $1 install"
-    return 1
+    return 0
     ;;
   esac
 }
@@ -83,7 +83,6 @@ install_asdf() {
     exit 1
   }
 
-  echo "installing asdf"
   go install github.com/asdf-vm/asdf/cmd/asdf@"$ASDF_VERSION"
   echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >>"$HOME/.zshrc"
   source "$HOME/.zshrc"
