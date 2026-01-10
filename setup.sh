@@ -98,3 +98,5 @@ main() {
   install_asdf
   install_golangling_ci
 }
+
+main
