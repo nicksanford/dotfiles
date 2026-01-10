@@ -4,7 +4,7 @@ set -Eeuox pipefail
 NVIM_VERSION=v0.11.5
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
-GO_ARCH=$(echo "$ARCH" | sed 's/^-x86_64$/amd64/')
+GO_ARCH=$(echo "$ARCH" | sed 's/^x86_64$/amd64/')
 ASDF_VERSION="v0.18.0"
 GO_VERSION="1.25.5"
 TMPDIR="${TMPDIR:-/tmp}"
