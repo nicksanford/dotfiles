@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 set -Eeuox pipefail
 
 NVIM_VERSION=v0.11.5
