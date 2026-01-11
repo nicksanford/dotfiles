@@ -9,11 +9,11 @@ GO_ARCH="${ARCH/#x86_64/amd64}"
 ASDF_VERSION="v0.18.0"
 GO_VERSION="1.25.5"
 GOLANGCI_LINT_VERSION=v2.8.0
-SKIP_CONFIRM=false
+skip_confirm=0
 TMPDIR="${TMPDIR:-/tmp}"
 
 check_if_stop() {
-  if [[ $SKIP_CONFIRM ]]; then
+  if [[ $skip_confirm -eq 1 ]]; then
     return 1
   fi
 
@@ -71,7 +71,7 @@ install_ohmyzsh() {
 
   git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
   if [[ -f "$HOME/.zshrc" ]]; then
-    if [[ $SKIP_CONFIRM ]]; then
+    if [[ $skip_confirm ]]; then
       mv "$HOME/.zshrc" "$HOME/.zshrc-bak"
       return
     fi
@@ -117,10 +117,11 @@ install_zig() {
 }
 
 main() {
-  for arg in $0; do
-    if [[ "$arg" == "-y" ]]; then
-      SKIP_CONFIRM=true
-    fi
+  while getopts "y" opt; do
+    case "$opt" in
+    y) skip_confirm=1 ;;
+    *) ;;
+    esac
   done
   mkdir -p "$HOME/.local/bin"
   install_ohmyzsh
