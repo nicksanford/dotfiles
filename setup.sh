@@ -9,9 +9,14 @@ GO_ARCH="${ARCH/#x86_64/amd64}"
 ASDF_VERSION="v0.18.0"
 GO_VERSION="1.25.5"
 GOLANGCI_LINT_VERSION=v2.8.0
+SKIP_CONFIRM=false
 TMPDIR="${TMPDIR:-/tmp}"
 
 check_if_stop() {
+  if [[ $SKIP_CONFIRM ]]; then
+    return
+  fi
+
   read -r -p "would you like to install $1? [y/N] " answer
   case "$answer" in [yY])
     echo "installing $1"
@@ -108,6 +113,11 @@ install_zig() {
 }
 
 main() {
+  for arg in $0; do
+    if [[ "$arg" == "-y" ]]; then
+      SKIP_CONFIRM=true
+    fi
+  done
   mkdir -p "$HOME/.local/bin"
   install_ohmyzsh
   install_go
