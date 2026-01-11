@@ -9,8 +9,6 @@ ASDF_VERSION="v0.18.0"
 GO_VERSION="1.25.5"
 GOLANGCI_LINT_VERSION=v2.8.0
 TMPDIR="${TMPDIR:-/tmp}"
-echo $GO_ARCH
-exit 0
 
 check_if_stop() {
   read -r -p "would you like to install $1? [y/N] " answer
