@@ -122,8 +122,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 if [[ -f "$HOME/.cargo/env" ]]; then 
   source  "$HOME/.cargo/env"
-else
-  echo "[WARN] ${0}:$LINENO unable to source $HOME/.cargo/env as it doesn't exist"
 fi
 
 
