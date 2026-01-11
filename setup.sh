@@ -30,7 +30,6 @@ install_go() {
   curl -Lo "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz https://go.dev/dl/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
   rm -rf /usr/local/go && tar -C /usr/local -xzf "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
   rm "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
-  source "$HOME"/.zshrc
 }
 
 install_nvim() {
@@ -86,8 +85,6 @@ install_asdf() {
   }
 
   go install github.com/asdf-vm/asdf/cmd/asdf@"$ASDF_VERSION"
-  echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >>"$HOME/.zshrc"
-  source "$HOME/.zshrc"
 }
 
 main() {

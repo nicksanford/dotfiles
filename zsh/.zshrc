@@ -118,11 +118,7 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 alias rs_watch="find src/*.rs | entr -s 'cargo run'"
 alias rs_test_watch="find src/*.rs | entr -s 'cargo test'"
-if [[ -f "$HOME/.asdf/asdf.sh" ]]; then 
-  source  $HOME/.asdf/asdf.sh
-else
-  echo "[WARN] ${0}:$LINENO unable to source $HOME/.asdf/asdf.sh as it doesn't exist"
-fi
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 if [[ -f "$HOME/.cargo/env" ]]; then 
   source  "$HOME/.cargo/env"
