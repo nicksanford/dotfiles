@@ -88,7 +88,7 @@ install_asdf() {
 }
 
 main() {
-  mkdir -p "$TMPDIR/.local/bin"
+  mkdir -p "$HOME/.local/bin"
   install_ohmyzsh
   install_go
   install_nvim
