@@ -71,6 +71,10 @@ install_ohmyzsh() {
 
   git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
   if [[ -f "$HOME/.zshrc" ]]; then
+    if [[ $SKIP_CONFIRM ]]; then
+      mv "$HOME/.zshrc" "$HOME/.zshrc-bak"
+      return
+    fi
     read -r -p "would you like to rename ~/.zshrc to ~/.zshrc-bak? [y/N] " answer
     case "$answer" in [yY])
       mv "$HOME/.zshrc" "$HOME/.zshrc-bak"
