@@ -66,7 +66,7 @@ require('lazy').setup({
 
   -- TELESCOPE
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim',            tag = '0.1.8',                                                      dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim',            tag = 'v0.2.1',                                                      dependencies = { 'nvim-lua/plenary.nvim' } },
   -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   -- AUTOCOMPLETE & SNIPITS
