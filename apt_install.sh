@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 set -Eeuox pipefail
-sudo apt install stow tmux ripgrep
+sudo apt install -y stow tmux ripgrep

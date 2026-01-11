@@ -116,6 +116,7 @@ export PYTHONSTARTUP=~/.pythonrc
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 alias rs_watch="find src/*.rs | entr -s 'cargo run'"
 alias rs_test_watch="find src/*.rs | entr -s 'cargo test'"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
