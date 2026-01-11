@@ -93,8 +93,10 @@ install_zig() {
   fi
 
   curl -Lo "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz" "https://ziglang.org/download/$ZIG_VERSION/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
-  tar -C "$HOME/.local/bin" -xf "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
+  tar -C "$TMPDIR" -xf "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
+  mv "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION/*" "$HOME/.local/bin"
   rm "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
+  rm -rf "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION"
 }
 
 main() {
