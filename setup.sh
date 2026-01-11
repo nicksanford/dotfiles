@@ -65,6 +65,14 @@ install_ohmyzsh() {
   fi
 
   git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+  if [[ -f "$HOME/.zshrc" ]]; then
+    read -r -p "would you like to rename ~/.zshrc to ~/.zshrc-bak? [y/N] " answer
+    case "$answer" in [yY])
+      mv "$HOME/.zshrc" "$HOME/.zshrc-bak"
+      ;;
+    *) ;;
+    esac
+  fi
 }
 
 install_asdf() {
@@ -104,7 +112,6 @@ main() {
   install_ohmyzsh
   install_go
   install_nvim
-  # install_rust
   install_asdf
   install_golanglint_ci
   install_zig

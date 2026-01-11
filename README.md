@@ -7,5 +7,5 @@
 TODO
 
 # All
-make 
 make setup
+make 
