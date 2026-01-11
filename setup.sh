@@ -14,7 +14,7 @@ TMPDIR="${TMPDIR:-/tmp}"
 
 check_if_stop() {
   if [[ $SKIP_CONFIRM ]]; then
-    return
+    return 1
   fi
 
   read -r -p "would you like to install $1? [y/N] " answer
