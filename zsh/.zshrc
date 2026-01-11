@@ -118,8 +118,18 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 alias rs_watch="find src/*.rs | entr -s 'cargo run'"
 alias rs_test_watch="find src/*.rs | entr -s 'cargo test'"
-. $HOME/.asdf/asdf.sh
-. "$HOME/.cargo/env"
+if [[ -f "$HOME/.asdf/asdf.sh" ]]; then 
+  source  $HOME/.asdf/asdf.sh
+else
+  echo "[WARN] ${0}:$LINENO unable to source $HOME/.asdf/asdf.sh as it doesn't exist"
+fi
+
+if [[ -f "$HOME/.cargo/env" ]]; then 
+  source  "$HOME/.cargo/env"
+else
+  echo "[WARN] ${0}:$LINENO unable to source $HOME/.cargo/env as it doesn't exist"
+fi
+
 
 # Added by flyctl installer
 export FLYCTL_INSTALL="/home/user/.fly"
