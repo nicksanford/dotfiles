@@ -42,6 +42,7 @@ install_nvim() {
   linux)
     curl -Lo "$TMPDIR/nvim" "https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-$ARCH.appimage"
     mv "$TMPDIR/nvim" "$HOME/.local/bin/nvim"
+    chmod +x "$HOME/.local/bin/nvim"
     ;;
   darwin)
     curl -Lo "$TMPDIR/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz" "https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-$ARCH.tar.gz"
