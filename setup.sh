@@ -2,6 +2,7 @@
 set -Eeuox pipefail
 
 NVIM_VERSION=v0.11.5
+ZIG_VERSION=0.15.2
 OS=$(uname -s | tr '[:upper:]' '[:lower:]')
 ARCH=$(uname -m)
 GO_ARCH="${ARCH/#x86_64/amd64}"
@@ -86,6 +87,16 @@ install_golanglint_ci() {
   curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b "$(go env GOPATH)"/bin"$GOLANGCI_LINT_VERSION"
 }
 
+install_zig() {
+  if check_if_stop "zig"; then
+    return
+  fi
+
+  curl -Lo "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz" "https://ziglang.org/download/$ZIG_VERSION/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
+  tar -C "$HOME/.local/bin" -xzf "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
+  rm "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
+}
+
 main() {
   mkdir -p "$HOME/.local/bin"
   install_ohmyzsh
@@ -94,6 +105,7 @@ main() {
   # install_rust
   install_asdf
   install_golanglint_ci
+  install_zig
 }
 
 main
