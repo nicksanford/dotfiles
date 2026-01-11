@@ -93,9 +93,9 @@ install_asdf() {
 
 main() {
   mkdir -p "$TMPDIR/.local/bin"
+  install_ohmyzsh
   install_go
   install_nvim
-  install_ohmyzsh
   install_rust
   install_asdf
   install_golangling_ci
