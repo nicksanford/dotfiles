@@ -91,7 +91,7 @@ main() {
   install_ohmyzsh
   install_go
   install_nvim
-  install_rust
+  # install_rust
   install_asdf
   install_golanglint_ci
 }
