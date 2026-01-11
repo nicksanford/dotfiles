@@ -101,7 +101,7 @@ install_golanglint_ci() {
   if check_if_stop "golanglint_ci"; then
     return
   fi
-  curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b "$(go env GOPATH)"/bin"$GOLANGCI_LINT_VERSION"
+  curl -sSfL https://golangci-lint.run/install.sh | sh -s -- -b "$(go env GOPATH)"/bin/"$GOLANGCI_LINT_VERSION"
 }
 
 install_zig() {
