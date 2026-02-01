@@ -35,7 +35,7 @@ install_go() {
   fi
 
   curl -Lo "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz https://go.dev/dl/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
-  rm -rf /usr/local/go && tar -C /usr/local -xzf "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
+  sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
   rm "$TMPDIR"/go"$GO_VERSION"."$OS"-"$GO_ARCH".tar.gz
 }
 
@@ -110,10 +110,8 @@ install_zig() {
   fi
 
   curl -Lo "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz" "https://ziglang.org/download/$ZIG_VERSION/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
-  tar -C "$TMPDIR" -xf "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
-  mv "$TMPDIR"/zig-"$ARCH"-"$OS"-"$ZIG_VERSION"/* "$HOME/.local/bin"
-  rm "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
-  rm -rf "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION"
+  tar -xf "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz" -C ~/.local/bin --strip-components=1
+  rm -rf "$TMPDIR/zig-$ARCH-$OS-$ZIG_VERSION.tar.xz"
 }
 
 main() {
